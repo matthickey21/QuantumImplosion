@@ -1,0 +1,98 @@
+body {
+  font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  font-weight: 400;
+}
+
+p, span, a, ul, li, button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+strong {
+  font-weight: 600;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.5em;
+  font-weight: 300;
+}
+
+strong {
+  font-weight: 400;
+}
+
+.block {
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-top: 6px;
+  padding-bottom: 0px;
+  border: 1px solid #e2e2e2;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 0 0 hsla(0, 0%, 91%, .75);
+
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.tile {
+  border: 1px solid #000;
+  width: 30%;
+  height: 0;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 1%;
+  padding-bottom: 25%;
+  margin: 1%;
+  float:left;
+  display:block;
+}
+.tile .title {
+  margin-top: 0px;
+}
+.tile.purple, .tile.blue, .tile.red, .tile.orange, .tile.green {
+  color: #fff;
+}
+.tile.purple {
+  background: #7f00ff;
+}
+.tile.purple:hover {
+  background: #6600cc;
+}
+.tile.red {
+  background: #ff0000;
+}
+.tile.red:hover {
+  background: #cc0000;
+}
+.tile.green {
+  background: #00a600;
+}
+.tile.green:hover {
+  background: #007300;
+}
+.tile.blue {
+  background: #2672ec;
+}
+.tile.blue:hover {
+  background: #125acd;
+}
+.tile.orange {
+  background: #ff8000;
+}
+.tile.orange:hover {
+  background: #cc6600;
+}
+.tile.yellow {
+  background: #ffff00;
+}
+.tile.yellow:hover {
+  background: #cccc00;
+}
