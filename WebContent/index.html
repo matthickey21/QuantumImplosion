@@ -1,9 +1,17 @@
 <html>
 <head>
-<title>Insight Remote Online</title>
+	<title>Insight Remote Online</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" type="text/css" href="mystyle.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+ 	<script type="text/javascript" src="test.js"></script>
 </head>
 <body bgcolor=white>
 
+<!--
 <table border="0">
 <tr>
 <td>
@@ -20,5 +28,141 @@
 </td>
 </tr>
 </table>
+-->
+
+<canvas id="mychart" class="block"></canvas>
+    <script>
+    		var ctx = document.getElementById("mychart").getContext("2d");
+    		ctx.canvas.width = 4;
+    		ctx.canvas.height = 1;
+    		var myBarChart = new Chart(ctx, {
+    			type: 'bar',
+    			data: {
+    				labels: ["0-32", "32-64", "64-128", "128-256", "256-512"],
+    				datasets: [{
+    					label: '% Speeds',
+    					data: [12, 19, 3, 5, 2],
+    					backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)',
+			                'rgba(153, 102, 255, 1)',
+			                'rgba(255, 159, 64, 1)'
+			            ],
+			            borderWidth: 1
+    				}]
+    			},
+    			options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+    		});
+    </script>
+
+<div class="jumbotron text-center">
+  <h1>HP Insight Remote Online</h1> 
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1><strong>Tiles</strong></h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="tile blue">
+        <h3 class="title">Storage Use</h3>
+        <canvas id="notMyChart" class="block"></canvas>
+    <script>
+    		var ctx = document.getElementById("notMyChart").getContext("2d");
+    		var myBarChart = new Chart(ctx, {
+    			type: 'bar',
+    			data: {
+    				labels: ["0-32", "32-64", "64-128", "128-256", "256-512"],
+    				datasets: [{
+    					label: '% Speeds',
+    					data: [12, 19, 3, 5, 2],
+    					backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255,99,132,1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)',
+			                'rgba(153, 102, 255, 1)',
+			                'rgba(255, 159, 64, 1)'
+			            ],
+			            borderWidth: 1
+    				}]
+    			},
+    			options: {
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero:true
+			                }
+			            }]
+			        }
+			    }
+    		});
+    </script>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tile blue">
+        <h3 class="title">CPU Usage</h3>
+        <p>Hello Red, this is a colored tile.</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tile blue">
+        <h3 class="title">Node Info</h3>
+        <p>Hello Orange, this is a colored tile.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="tile blue">
+        <h3 class="title">Deduplication</h3>
+        <p>Hello Green, this is a colored tile.</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tile blue">
+        <h3 class="title">File I/O</h3>
+        <p>Hello Blue, this is a colored tile.</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="tile blue">
+        <h3 class="title">Bandwidth</h3>
+        <p>Hello Yellow, this is a colored tile.</p>
+      </div>
+    </div>    
+  </div>
+</div>
+
 </body>
 </html>
