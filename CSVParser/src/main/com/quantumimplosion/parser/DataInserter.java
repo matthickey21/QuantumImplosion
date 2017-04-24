@@ -3,7 +3,6 @@ package com.quantumimplosion.parser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Collections;
@@ -79,6 +78,10 @@ public class DataInserter {
 
 	public boolean insertData(String tableName,List<Object> values)
 	{
+		if (connection == null)
+		{
+			connect();
+		}
 		List<Integer> argTypes = tableToArgTypeMap.get(tableName);
 		if (argTypes == null)
 		{
@@ -129,81 +132,4 @@ public class DataInserter {
 		}
 		return true;
 	}
-	//
-	//	public boolean insertNodeInfo(String system_id, String from, String to, String nodeUpSinceMostRecent, double nodeCountOffline, double nodeCountMissing)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("node_information"), system_id, from, to, nodeUpSinceMostRecent, nodeCountOffline, nodeCountMissing));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
-	//
-	//	public boolean insertSystemData(String system_id, String system_companyName, String system_model, String updated, String system_install_date)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("system"), system_id, system_companyName, system_model, updated, system_install_date));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
-	//
-	//	public boolean insertFileIOData(String system_id, String from, String to, double totalWriteIOsHistVlun, double totalWriteIOsHistPortTargets, double delAcks, double delAcksPct, double writesGt16s, double writesGtXmsPct, double writes1msPct, double readsGtXmsPct, double readsXmsPct, double totalsGtXmsPct, double totalsXmsPct, double portReadAvgIOSizeKB, double portWriteAvgIOSizeKB, double portTotalAvgIOSizeKB)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("file_io"), system_id, from, to, totalWriteIOsHistVlun, totalWriteIOsHistPortTargets, delAcks, delAcksPct, writesGt16s, writesGtXmsPct, writes1msPct, readsGtXmsPct, readsXmsPct, totalsGtXmsPct, totalsXmsPct, portReadAvgIOSizeKB, portWriteAvgIOSizeKB, portTotalAvgIOSizeKB));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
-	//
-	//	public boolean insertBandwidthData(String system_id, String from, String to, String portReadBandwidthMBPS, String portWriteBandwidthMBPS, String portTotalBandwidthMBPS)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("bandwidth"), system_id, from, to, portReadBandwidthMBPS, portWriteBandwidthMBPS, portTotalBandwidthMBPS));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
-	//
-	//	public boolean insertDeduplicationData(String system_id, String from, String to, double ddsSizeUsedTiB , double ddsSizeUsedTiBPrevious, double capacity_total_dedupeRatio)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("deduplication"), system_id, from, to, ddsSizeUsedTiB , ddsSizeUsedTiBPrevious, capacity_total_dedupeRatio));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
-	//
-	//	public boolean insertStorageUsageData(String system_id, String from, String to, double capacity_total_sizeTiB, double capacity_total_freePct, double capacity_byType_fc_sizeTiB, double capacity_byType_nl_sizeTiB, double capacity_byType_ssd_sizeTiB, double virtualCapacity_byType_tdvv_vvCount, double virtualCapacity_byType_tdvv_sizeTiB, double vvCountHistVlun, double vvCountHistVlunPrevious)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("storage_usage"), system_id, from, to, capacity_total_sizeTiB, capacity_total_freePct, capacity_byType_fc_sizeTiB, capacity_byType_nl_sizeTiB, capacity_byType_ssd_sizeTiB, virtualCapacity_byType_tdvv_vvCount, virtualCapacity_byType_tdvv_sizeTiB, vvCountHistVlun, vvCountHistVlunPrevious));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
-	//
-	//	public boolean insertCPUUsageData(String system_id, String from, String to, double cpuLatestSysAvgPct, double cpuLatestUserAvgPct, double cpuLatestTotalAvgPct, double cpuLatestSysMaxPct, double cpuLatestUserMaxPct, double cpuLatestTotalMaxPct)
-	//	{
-	//		try {
-	//			connection.execSQLQuery(String.format(tableToStatementMap.get("cpu_usage"), system_id, from, to, cpuLatestSysAvgPct, cpuLatestUserAvgPct, cpuLatestTotalAvgPct, cpuLatestSysMaxPct, cpuLatestUserMaxPct, cpuLatestTotalMaxPct ));
-	//		} catch (SQLException e) {
-	//			e.printStackTrace();
-	//			return false;
-	//		}
-	//		return true;
-	//	}
 }

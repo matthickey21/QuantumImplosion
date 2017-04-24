@@ -1,8 +1,8 @@
 package com.quantumimplosion.parser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.csv.CSVRecord;
@@ -10,10 +10,11 @@ import org.apache.commons.csv.CSVRecord;
 public class Validator {
 
 	private static final ArrayList<Class<?>> expectedPerformanceTypes;
+	
+	//This is terrible, I know. Sue me
 	static {
-		ArrayList<Class<?>> temp = new ArrayList<Class<?>>();
 		//Hardcoded column types
-		arrayListAddAll(temp, Double.class, String.class, String.class, String.class, String.class, Double.class,
+		expectedPerformanceTypes = new ArrayList<Class<?>>(Arrays.asList(Double.class, String.class, String.class, String.class, String.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
@@ -28,16 +29,9 @@ public class Validator {
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, String.class,
-				Double.class, Double.class, Double.class);
-		expectedPerformanceTypes = temp;
+				Double.class, Double.class, Double.class));
 	}
 
-	private static void arrayListAddAll(ArrayList list, Object... objects) {
-		for (Object o : objects) {
-			list.add(o);
-		}
-	}
-	
 	public static Set<Integer> validateSummaryRecord(CSVRecord record)
 	{
 		return null;
