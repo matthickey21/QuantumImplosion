@@ -47,8 +47,8 @@
     <div class="col-sm-4">
       <div class="tile blue">
         <h3 class="title">Storage Use</h3>
-        <input type="number" name="freestorage" value="1">
-        <input type="number" name="usedstorage" value="1">
+        <input type="hidden" id="freestorage" value="1">
+        <input type="hidden" id="usedstorage" value="1">
         <script>
           var xhr = new XMLHttpRequest(); 
           xhr.open('GET', "/data/{system}/storage", true);
@@ -75,7 +75,7 @@
     					labels: ["Free Storage", "Used Storage"],
     					datasets: [{
     						label: 'Storage',
-    						data: [document.getElementById("freestorage").value document.getElementById("usedstorage").value],
+                data: [document.getElementById("freestorage").value, document.getElementById("usedstorage").value],
     						backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
                 borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
                 borderWidth: 1
