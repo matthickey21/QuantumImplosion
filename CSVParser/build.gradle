@@ -6,6 +6,20 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+  main {
+    java {
+      srcDir 'src/main'
+    }
+  }
+  
+  test {
+  	java {
+  		srcDir 'src/test'
+  	}
+  }
+}
+
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'

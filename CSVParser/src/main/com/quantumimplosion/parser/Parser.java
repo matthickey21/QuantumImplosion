@@ -1,4 +1,4 @@
-package quantumimplosion.iro.util;
+package com.quantumimplosion.parser;
 
 import java.io.File;
 import java.io.IOException;

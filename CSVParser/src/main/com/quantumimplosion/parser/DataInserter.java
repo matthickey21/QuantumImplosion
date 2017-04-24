@@ -1,4 +1,4 @@
-package quantumimplosion.iro.util;
+package com.quantumimplosion.parser;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
