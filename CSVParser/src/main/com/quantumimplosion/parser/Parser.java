@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -17,15 +14,6 @@ import org.apache.commons.csv.CSVRecord;
 
 public class Parser {
 
-	private static final Map<String, List<String>> tableToHeadersMap;
-	static
-	{
-		Map<String, List<String>> temp = new HashMap<String, List<String>>();
-		ArrayList<String> headers = new ArrayList<String>(Arrays.asList("system_id", "from", "to", "nodeUpSinceMostRecent", "nodeCountOffline", "nodeCountMissing"));
-		temp.put("node_information", headers);
-		temp.put("system", Arrays.asList("system_id", "system_companyName", "system_model", "updated", "system_install_date"));
-		tableToHeadersMap = Collections.unmodifiableMap(temp);
-	}
 	private DataInserter dataInserter;
 
 	public void parseSummary(String summaryFilePath)
@@ -61,7 +49,7 @@ public class Parser {
 		for (CSVRecord record: parser)
 		{
 			Set<Integer> invalidColumns = Validator.validatePerformanceRecord(record);
-			for (String table : tableToHeadersMap.keySet())
+			for (String table : CSVParserConstants.tableToHeadersMap.keySet())
 			{
 				parseData(record, table, invalidColumns, headerMap);
 			}
@@ -70,9 +58,9 @@ public class Parser {
 
 	private void parseData(CSVRecord record, String tableName, Set<Integer> invalidColumns, Map<String, Integer>headerMap)
 	{
-		List<String> headers = tableToHeadersMap.get(tableName);
+		List<String> headers = CSVParserConstants.tableToHeadersMap.get(tableName);
 		List<Object> values = new ArrayList<Object>();
-		List<Integer> argTypes = DataInserter.tableToArgTypeMap.get(tableName);
+		List<Integer> argTypes = CSVParserConstants.tableToArgTypeMap.get(tableName);
 		for (int i = 0; i < headers.size(); i++)
 		{
 			String header = headers.get(i);
@@ -82,7 +70,7 @@ public class Parser {
 			}
 			else
 			{
-				if (argTypes.get(i) == DataInserter.STRINGTYPE)
+				if (argTypes.get(i) == CSVParserConstants.STRINGTYPE)
 				{
 					values.add(record.get(header));
 				}
