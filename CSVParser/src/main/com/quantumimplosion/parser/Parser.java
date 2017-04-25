@@ -46,7 +46,7 @@ public class Parser {
 		File csvData = new File(dataDirectory + serialNum + "-perform.csv");
 		CSVParser parser;
 		try {
-			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT.withHeader());
+			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT.withQuote('"').withHeader());
 		} catch (IOException e) {
 			//Do something useful
 			e.printStackTrace();
