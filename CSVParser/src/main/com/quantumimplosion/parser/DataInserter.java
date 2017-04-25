@@ -101,6 +101,7 @@ public class DataInserter {
 					insert.setNull(i+1, argTypes.get(i) == CSVParserConstants.STRINGTYPE ? java.sql.Types.VARCHAR : java.sql.Types.DOUBLE);
 				}
 			}
+			System.out.println(insert.toString());
 			insert.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
