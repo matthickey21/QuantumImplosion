@@ -74,6 +74,10 @@ public class Parser {
 		List<String> headers = CSVParserConstants.tableToHeadersMap.get(tableName);
 		List<Object> values = new ArrayList<Object>();
 		List<Integer> argTypes = CSVParserConstants.tableToArgTypeMap.get(tableName);
+		if (invalidColumns == null)
+			System.out.println("Invalid Columns list is null");
+		if (headerMap == null)
+			System.out.println("Header Map is null");
 		for (int i = 0; i < headers.size(); i++)
 		{
 			String header = headers.get(i);

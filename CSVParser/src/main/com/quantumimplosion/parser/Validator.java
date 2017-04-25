@@ -48,7 +48,7 @@ public class Validator {
 			{
 				try
 				{
-					Integer.parseInt(record.get(i));
+					Double.parseDouble(record.get(i));
 				}
 				catch (NumberFormatException nfe)
 				{
