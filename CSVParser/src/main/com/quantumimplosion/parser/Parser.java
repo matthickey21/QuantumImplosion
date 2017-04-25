@@ -29,17 +29,15 @@ public class Parser {
 		File csvData = new File(dataDirectory + summaryFilePath);
 		CSVParser parser;
 		try {
-			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT);
+			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.newFormat('\t').withQuote('"').withHeader());
 		} catch (IOException e) {
 			//Do something useful
 			e.printStackTrace();
 			return;
 		}
-		int recordNum = 0;
 		for (CSVRecord record : parser)
 		{
-			if (recordNum++ != 0)
-				parsePerformance(record.get(0));
+			parsePerformance(record.get(0));
 		}
 	}
 
@@ -48,24 +46,21 @@ public class Parser {
 		File csvData = new File(dataDirectory + serialNum + "-perform.csv");
 		CSVParser parser;
 		try {
-			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT);
+			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.newFormat('\t').withQuote('"').withHeader());
 		} catch (IOException e) {
 			//Do something useful
 			e.printStackTrace();
 			return;
 		}
 		Map<String, Integer> headerMap = parser.getHeaderMap();
-		int recordNum = 0;
 		for (CSVRecord record: parser)
 		{
-			if (recordNum++ != 0)
+			Set<Integer> invalidColumns = Validator.validatePerformanceRecord(record);
+			for (String table : CSVParserConstants.tableToHeadersMap.keySet())
 			{
-				Set<Integer> invalidColumns = Validator.validatePerformanceRecord(record);
-				for (String table : CSVParserConstants.tableToHeadersMap.keySet())
-				{
-					parseData(record, table, invalidColumns, headerMap);
-				}
+				parseData(record, table, invalidColumns, headerMap);
 			}
+
 		}
 	}
 
