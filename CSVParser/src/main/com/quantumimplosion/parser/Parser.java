@@ -58,7 +58,8 @@ public class Parser {
 			Set<Integer> invalidColumns = Validator.validatePerformanceRecord(record);
 			for (String table : CSVParserConstants.tableToHeadersMap.keySet())
 			{
-				parseData(record, table, invalidColumns, headerMap);
+				if (!table.equals("system"))
+					parseData(record, table, invalidColumns, headerMap);
 			}
 
 		}
