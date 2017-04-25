@@ -40,6 +40,7 @@ public class Validator {
 	public static Set<Integer> validatePerformanceRecord(CSVRecord record)
 	{
 		Set<Integer> invalidColumns = new HashSet<Integer>();
+		System.out.println("Record Size: " + record.size());
 		for (int i = 0; i < record.size(); i++)
 		{
 			if (expectedPerformanceTypes.get(i) == Double.class)
