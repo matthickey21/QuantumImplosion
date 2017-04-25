@@ -83,4 +83,14 @@ public class Parser {
 		dataInserter.insertData(tableName, values);
 	}
 
+    //Input: list of summary files
+    public static void main(String[] args)
+    {
+	for (String arg : args)
+	{
+	    parseSummary(arg);
+	}
+		
+    }
+
 }
