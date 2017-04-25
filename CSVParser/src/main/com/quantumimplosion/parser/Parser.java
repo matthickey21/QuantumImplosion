@@ -35,9 +35,12 @@ public class Parser {
 			e.printStackTrace();
 			return;
 		}
+		Map<String, Integer> headerMap = parser.getHeaderMap();
 		for (CSVRecord record : parser)
 		{
+			Set<Integer> invalidColumns = Validator.validateSummaryRecord(record);
 			parsePerformance(record.get(0));
+			parseData(record, "system", invalidColumns, headerMap);
 		}
 	}
 
@@ -61,7 +64,6 @@ public class Parser {
 				if (!table.equals("system"))
 					parseData(record, table, invalidColumns, headerMap);
 			}
-
 		}
 	}
 
