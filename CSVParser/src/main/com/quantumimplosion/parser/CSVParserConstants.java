@@ -47,7 +47,7 @@ public class CSVParserConstants {
 		temp3.put("system", Arrays.asList("systemId", "system_companyName", "system_model", "updated", "system_install_date", "capacity_total_sizeTiB", "capacity_total_freePct", "capacity_byType_fc_sizeTiB", "capacity_byType_nl_sizeTiB", "capacity_byType_ssd_sizeTiB", "virtualCapacity_byType_tdvv_vvCount", "virtualCapacity_byType_tdvv_sizeTiB"));
 		temp3.put("file_io", Arrays.asList("systemId", "from", "to", "totalWriteIOsHistVlun", "totalWriteIOsHistPortTargets", "delAcks", "delAcksPct", "writesGt16s", "writesGt32msPct", "writes1msPct", "readsGt32msPct", "reads32msPct", "totalsGt32msPct", "totals32msPct", "portReadAvgIOSizeKB", "portWriteAvgIOSizeKB", "portTotalAvgIOSizeKB"));
 		temp3.put("bandwidth", Arrays.asList("systemId", "from", "to", "portReadBandwidthMBPS", "portWriteBandwidthMBPS", "portTotalBandwidthMBPS"));
-		temp3.put("deduplication", Arrays.asList("systemId", "from", "to", "ddsSizeUsedTiB ", "ddsSizeUsedTiBPrevious", "capacity_total_dedupeRatio"));
+		temp3.put("deduplication", Arrays.asList("systemId", "from", "to", "ddsSizeUsedTiB", "ddsSizeUsedTiBPrevious", "capacity_total_dedupeRatio"));
 		temp3.put("storage_usage", Arrays.asList("systemId", "from", "to", "vvCountHistVlun", "vvCountHistVlunPrevious"));
 		temp3.put("cpu_usage", Arrays.asList("systemId", "from", "to", "cpuLatestSysAvgPct", "cpuLatestUserAvgPct", "cpuLatestTotalAvgPct", "cpuLatestSysMaxPct", "cpuLatestUserMaxPct", "cpuLatestTotalMaxPct"));
 		tableToHeadersMap = Collections.unmodifiableMap(temp3);
