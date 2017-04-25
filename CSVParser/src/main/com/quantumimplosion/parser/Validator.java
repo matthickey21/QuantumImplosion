@@ -10,7 +10,7 @@ import org.apache.commons.csv.CSVRecord;
 public class Validator {
 
 	private static final ArrayList<Class<?>> expectedPerformanceTypes;
-
+	
 	//This is terrible, I know. Sue me
 	static {
 		//Hardcoded column types
@@ -35,7 +35,7 @@ public class Validator {
 
 	public static Set<Integer> validateSummaryRecord(CSVRecord record)
 	{
-		return null;
+		return new HashSet<Integer>();
 	}
 
 	public static Set<Integer> validatePerformanceRecord(CSVRecord record)
