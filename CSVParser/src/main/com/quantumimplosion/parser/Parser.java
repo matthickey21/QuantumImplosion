@@ -15,15 +15,18 @@ import org.apache.commons.csv.CSVRecord;
 public class Parser {
 
 	private DataInserter dataInserter;
+	
+	private String dataDirectory = ".";
 
-	public Parser()
+	public Parser(String dataDirectory)
 	{
 		dataInserter = new DataInserter();
+		this.dataDirectory = dataDirectory;
 	}
 
 	public void parseSummary(String summaryFilePath)
 	{
-		File csvData = new File(summaryFilePath);
+		File csvData = new File(dataDirectory + summaryFilePath);
 		CSVParser parser;
 		try {
 			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT);
@@ -41,7 +44,7 @@ public class Parser {
 
 	public void parsePerformance(String serialNum)
 	{
-		File csvData = new File(serialNum + "-perform.csv");
+		File csvData = new File(dataDirectory + serialNum + "-perform.csv");
 		CSVParser parser;
 		try {
 			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT);
@@ -91,10 +94,10 @@ public class Parser {
 	//Input: list of summary files
 	public static void main(String[] args)
 	{
-		Parser p = new Parser();
-		for (String arg : args)
+		Parser p = new Parser(args[0]);
+		for (int i = 1; i < args.length; i++)
 		{
-			p.parseSummary(arg);
+			p.parseSummary(args[i]);
 		}
 
 	}
