@@ -29,7 +29,7 @@ public class Validator {
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, String.class,
-				Double.class, Double.class, Double.class));
+				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class));
 	}
 
 	public static Set<Integer> validateSummaryRecord(CSVRecord record)
