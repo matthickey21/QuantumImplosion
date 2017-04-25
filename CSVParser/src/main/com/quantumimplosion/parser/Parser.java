@@ -16,6 +16,11 @@ public class Parser {
 
 	private DataInserter dataInserter;
 
+	public Parser()
+	{
+		dataInserter = new DataInserter();
+	}
+
 	public void parseSummary(String summaryFilePath)
 	{
 		File csvData = new File(summaryFilePath);
@@ -83,14 +88,15 @@ public class Parser {
 		dataInserter.insertData(tableName, values);
 	}
 
-    //Input: list of summary files
-    public static void main(String[] args)
-    {
-	for (String arg : args)
+	//Input: list of summary files
+	public static void main(String[] args)
 	{
-	    parseSummary(arg);
+		Parser p = new Parser();
+		for (String arg : args)
+		{
+			p.parseSummary(arg);
+		}
+
 	}
-		
-    }
 
 }

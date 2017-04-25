@@ -14,9 +14,14 @@ public class DataInserter {
 	private static final String dbName = "quantumimplosion";
 	private static final String dbUsername = "quantumimplosion";
 	private static final String dbPassword = "notpassword";
-	private static Connection connection;
+	private Connection connection;
 
-	private static boolean connect()
+	public DataInserter()
+	{
+		
+	}
+	
+	private boolean connect()
 	{
 		if (connection == null)
 		{
@@ -34,7 +39,7 @@ public class DataInserter {
 		return true;
 	}
 
-	public static void close()
+	public void close()
 	{
 		if (connection != null)
 		{
