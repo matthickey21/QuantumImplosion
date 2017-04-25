@@ -29,7 +29,7 @@ public class Parser {
 		File csvData = new File(dataDirectory + summaryFilePath);
 		CSVParser parser;
 		try {
-			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT.withQuote(null).withHeader());
+			parser = CSVParser.parse(csvData, Charset.defaultCharset(), CSVFormat.DEFAULT.withQuote('"').withHeader());
 		} catch (IOException e) {
 			//Do something useful
 			e.printStackTrace();
