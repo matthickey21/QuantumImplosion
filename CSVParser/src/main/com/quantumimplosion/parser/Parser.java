@@ -15,7 +15,7 @@ import org.apache.commons.csv.CSVRecord;
 public class Parser {
 
 	private DataInserter dataInserter;
-	
+
 	private String dataDirectory = ".";
 
 	public Parser(String dataDirectory)
@@ -35,10 +35,11 @@ public class Parser {
 			e.printStackTrace();
 			return;
 		}
+		int recordNum = 0;
 		for (CSVRecord record : parser)
 		{
-
-			parsePerformance(record.get(0));
+			if (recordNum++ != 0)
+				parsePerformance(record.get(0));
 		}
 	}
 
@@ -54,12 +55,16 @@ public class Parser {
 			return;
 		}
 		Map<String, Integer> headerMap = parser.getHeaderMap();
+		int recordNum = 0;
 		for (CSVRecord record: parser)
 		{
-			Set<Integer> invalidColumns = Validator.validatePerformanceRecord(record);
-			for (String table : CSVParserConstants.tableToHeadersMap.keySet())
+			if (recordNum++ != 0)
 			{
-				parseData(record, table, invalidColumns, headerMap);
+				Set<Integer> invalidColumns = Validator.validatePerformanceRecord(record);
+				for (String table : CSVParserConstants.tableToHeadersMap.keySet())
+				{
+					parseData(record, table, invalidColumns, headerMap);
+				}
 			}
 		}
 	}
