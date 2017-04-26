@@ -28,7 +28,7 @@ public class CSVParserConstants {
 	static
 	{
 		Map<String, String> temp2 = new HashMap<String, String>();
-		temp2.put("Node Information", "INSERT INTO \"Node Information\" (system_id, \"from\", \"to\", \"nodeUpSinceMostRecent\", nodeCountOffline, nodeCountMissing) VALUES (?, ?, ?, ?, ?, ?);");
+		temp2.put("Node Information", "INSERT INTO \"Node Information\" (system_id, \"from\", \"to\", \"nodeUpSinceMostRecent\", \"nodeCountOffline\", \"nodeCountMissing\") VALUES (?, ?, ?, ?, ?, ?);");
 		temp2.put("System", "INSERT INTO System (system_id, system_companyName, system_model, updated, system_install_date, capacity_total_sizeTiB, capacity_total_freePct, capacity_byType_fc_sizeTiB, capacity_byType_nl_sizeTiB, capacity_byType_ssd_sizeTiB, virtualCapacity_byType_tdvv_vvCount, virtualCapacity_byType_tdvv_sizeTiB, capacity_total_dedupeRatio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
 		temp2.put("FILE I/O", "INSERT INTO \"File I/O\" (system_id, \"from\", \"to\", totalWriteIOsHistVlun, totalWriteIOsHistPortTargets, delAcks, delAcksPct, writesGt16s, writesGtXmsPct, writes1msPct, readsGtXmsPct, readsXmsPct, totalsGtXmsPct, totalsXmsPct, portReadAvgIOSizeKB, portWriteAvgIOSizeKB, portTotalAvgIOSizeKB) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
 		temp2.put("Bandwith", "INSERT INTO Bandwith (system_id, \"from\", \"to\", portReadBandwidthMBPS, portWriteBandwidthMBPS, portTotalBandwidthMBPS) VALUES (?, ?, ?, ?, ?, ?);");

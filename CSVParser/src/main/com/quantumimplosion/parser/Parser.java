@@ -40,7 +40,7 @@ public class Parser {
 		{
 			Set<Integer> invalidColumns = Validator.validateSummaryRecord(record);
 			parsePerformance(record.get(0));
-			parseData(record, "system", invalidColumns, headerMap);
+//			parseData(record, "system", invalidColumns, headerMap);
 		}
 	}
 
