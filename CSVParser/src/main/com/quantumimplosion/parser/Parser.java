@@ -69,6 +69,7 @@ public class Parser {
 
 	private void parseData(CSVRecord record, String tableName, Set<Integer> invalidColumns, Map<String, Integer>headerMap)
 	{
+		System.out.println("Parsing data for table: " + tableName);
 		List<String> headers = CSVParserConstants.tableToHeadersMap.get(tableName);
 		List<Object> values = new ArrayList<Object>();
 		List<Integer> argTypes = CSVParserConstants.tableToArgTypeMap.get(tableName);

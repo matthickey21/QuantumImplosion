@@ -14,7 +14,7 @@ public class Validator {
 	//This is terrible, I know. Sue me
 	static {
 		//Hardcoded column types
-		expectedPerformanceTypes = new ArrayList<Class<?>>(Arrays.asList(Double.class, String.class, String.class, String.class, String.class, Double.class,
+		expectedPerformanceTypes = new ArrayList<Class<?>>(Arrays.asList(Integer.class, String.class, String.class, String.class, String.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
 				Double.class, Double.class, Double.class, Double.class, Double.class, Double.class, Double.class,
@@ -49,6 +49,17 @@ public class Validator {
 				try
 				{
 					Double.parseDouble(record.get(i));
+				}
+				catch (NumberFormatException nfe)
+				{
+					invalidColumns.add(i);
+				}
+			}
+			else if (expectedPerformanceTypes.get(i) == Integer.class)
+			{
+				try
+				{
+					Integer.parseInt(record.get(i));
 				}
 				catch (NumberFormatException nfe)
 				{

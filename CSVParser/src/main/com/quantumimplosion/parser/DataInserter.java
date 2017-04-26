@@ -86,6 +86,8 @@ public class DataInserter {
 						case CSVParserConstants.STRINGTYPE:
 							insert.setString(i+1, (String) values.get(i));
 							break;
+						case CSVParserConstants.INTTYPE:
+							insert.setInt(i+1, (Integer)values.get(i));
 						default:
 							insert.setDouble(i+1, (Double) values.get(i));
 							break;
@@ -102,7 +104,6 @@ public class DataInserter {
 					insert.setNull(i+1, argTypes.get(i) == CSVParserConstants.STRINGTYPE ? java.sql.Types.VARCHAR : java.sql.Types.DOUBLE);
 				}
 			}
-			System.out.println(insert.toString());
 			insert.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
