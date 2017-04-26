@@ -5,7 +5,7 @@ function drawStorageChart() {
 	// xhr.addEventlistener("readystatechange", processRequest, false);
 	// xhr.onreadystatechange = processRequest; 
 
-	var freestorage = 1;
+	var freestorage = 12;
 	var usedstorage = 1;
 	function processRequest(e) {
 		if (xhr.readyState == 4 && status == 200) {
