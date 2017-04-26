@@ -11,7 +11,7 @@ public class DataInserter {
 
 	private static final String dbHost = "67.205.170.157";
 	private static final int dbPort = 5432;
-	private static final String dbName = "quantumimplosion";
+	private static final String dbName = "overload";
 	private static final String dbUsername = "quantumimplosion";
 	private static final String dbPassword = "notpassword";
 	private Connection connection;
@@ -33,6 +33,7 @@ public class DataInserter {
 			}
 			catch (Exception e)
 			{
+				System.out.println("Connection failed");
 				return false;
 			}
 		}
