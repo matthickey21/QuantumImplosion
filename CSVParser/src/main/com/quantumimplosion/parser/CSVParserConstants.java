@@ -28,13 +28,13 @@ public class CSVParserConstants {
 	static
 	{
 		Map<String, String> temp2 = new HashMap<String, String>();
-		temp2.put("node_information", "INSERT INTO node_information (system_id, \"from\", to, nodeUpSinceMostRecent, nodeCountOffline, nodeCountMissing) VALUES (?, ?, ?, ?, ?, ?);");
+		temp2.put("node_information", "INSERT INTO node_information (system_id, \"from\", \"to\", nodeUpSinceMostRecent, nodeCountOffline, nodeCountMissing) VALUES (?, ?, ?, ?, ?, ?);");
 		temp2.put("system", "INSERT INTO system (system_id, system_companyName, system_model, updated, system_install_date, capacity_total_sizeTiB, capacity_total_freePct, capacity_byType_fc_sizeTiB, capacity_byType_nl_sizeTiB, capacity_byType_ssd_sizeTiB, virtualCapacity_byType_tdvv_vvCount, virtualCapacity_byType_tdvv_sizeTiB, capacity_total_dedupeRatio) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-		temp2.put("file_io", "INSERT INTO file_io (system_id, \"from\", to, totalWriteIOsHistVlun, totalWriteIOsHistPortTargets, delAcks, delAcksPct, writesGt16s, writesGtXmsPct, writes1msPct, readsGtXmsPct, readsXmsPct, totalsGtXmsPct, totalsXmsPct, portReadAvgIOSizeKB, portWriteAvgIOSizeKB, portTotalAvgIOSizeKB) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
-		temp2.put("bandwidth", "INSERT INTO bandwidth (system_id, \"from\", to, portReadBandwidthMBPS, portWriteBandwidthMBPS, portTotalBandwidthMBPS) VALUES (?, ?, ?, ?, ?, ?);");
-		temp2.put("deduplication", "INSERT INTO deduplication(system_id, \"from\", to, ddsSizeUsedTiB , ddsSizeUsedTiBPrevious) VALUES (?, ?, ?, ?, ?);");
-		temp2.put("storage_usage", "INSERT INTO storage_usage (system_id, \"from\", to, vvCountHistVlun, vvCountHistVlunPrevious) VALUES (?, ?, ?, ?, ?);");
-		temp2.put("cpu_usage", "INSERT INTO cpu_usage (system_id, \"from\", to, cpuLatestSysAvgPct, cpuLatestUserAvgPct, cpuLatestTotalAvgPct, cpuLatestSysMaxPct, cpuLatestUserMaxPct, cpuLatestTotalMaxPct) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		temp2.put("file_io", "INSERT INTO file_io (system_id, \"from\", \"to\", totalWriteIOsHistVlun, totalWriteIOsHistPortTargets, delAcks, delAcksPct, writesGt16s, writesGtXmsPct, writes1msPct, readsGtXmsPct, readsXmsPct, totalsGtXmsPct, totalsXmsPct, portReadAvgIOSizeKB, portWriteAvgIOSizeKB, portTotalAvgIOSizeKB) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+		temp2.put("bandwidth", "INSERT INTO bandwidth (system_id, \"from\", \"to\", portReadBandwidthMBPS, portWriteBandwidthMBPS, portTotalBandwidthMBPS) VALUES (?, ?, ?, ?, ?, ?);");
+		temp2.put("deduplication", "INSERT INTO deduplication(system_id, \"from\", \"to\", ddsSizeUsedTiB , ddsSizeUsedTiBPrevious) VALUES (?, ?, ?, ?, ?);");
+		temp2.put("storage_usage", "INSERT INTO storage_usage (system_id, \"from\", \"to\", vvCountHistVlun, vvCountHistVlunPrevious) VALUES (?, ?, ?, ?, ?);");
+		temp2.put("cpu_usage", "INSERT INTO cpu_usage (system_id, \"from\", \"to\", cpuLatestSysAvgPct, cpuLatestUserAvgPct, cpuLatestTotalAvgPct, cpuLatestSysMaxPct, cpuLatestUserMaxPct, cpuLatestTotalMaxPct) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);");
 
 		tableToStatementMap = Collections.unmodifiableMap(temp2);
 	}
