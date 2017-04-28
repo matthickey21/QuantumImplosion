@@ -3,7 +3,8 @@
 	<title>Insight Remote Online</title>
 	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" type="text/css" href="mystyle.css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="mystyle.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -11,224 +12,219 @@
 </head>
 <body bgcolor=white onload="drawStorageChart()">
 
-<!--
-<table border="0">
-<tr>
-<td>
-<h3>Index page placeholder</h3>
-<a href="http://67.205.170.157:8080/manager/html">Return to manager app.</a>
-<br>
-<td>
-<img src="images/qi.png">
-</td>
-<br>
-<h1>Insight Remote Online</h1>
-<br>
-<a href="rest">HTTP GET example.</a><br>
-</td>
-</tr>
-</table>
--->
-
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-3"><center>HP Insight Remote Online</center></h1>
     <p class="lead"><center>A Quantum Implosion Product</center></p>
-    <hr class="my-4">
   </div>
 </div>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h1><strong>&nbsp &nbspDashboard</strong></h1>
-    </div>
-  </div>
-  <a href="/Users/vculanathan/Downloads/QuantumImplosion-master/WebContent/data.html">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="tile blue">
-        <h3 class="title"><center>Storage Use</center></h3>
-        <canvas id="storageChart" class="block"></canvas>
-        <script src="functions.js">
-          drawStorageChart();
-        </script>
-        <!-- <input type="hidden" id="freestorage" value="1">
-        <input type="hidden" id="usedstorage" value="1">
-        <script>
-          var xhr = new XMLHttpRequest(); 
-          xhr.open('GET', "/data/{system}/storage", true);
-          xhr.send();
-          xhr.addEventlistener("readystatechange", processRequest, false);
-          xhr.onreadystatechange = processRequest; 
-          
-          function processRequest(e) {
-            if (xhr.readyState == 4 && status == 200) {
-              var response = JSON.parse(xhr.responseText);
-              document.getElementById("freestorage").value = response.freeStorage / response.totalStorage;
-              document.getElementById("usedstorage").value = (response.totalStorage - response.freeStorage) / response.totalStorage;
-            }
-          } 
-        </script>
-        <canvas id="storageChart" class="block"></canvas>
-      	<script>
-      		var ctx = document.getElementById("storageChart").getContext("2d");
-      		ctx.canvas.width = 40;
-      		ctx.canvas.height = 26;
-    			var storageChart = new Chart(ctx, {
-    				type: 'pie',
-    				data: {
-    					labels: ["Free Storage", "Used Storage"],
-    					datasets: [{
-    						label: 'Storage',
-                data: [document.getElementById("freestorage").value, document.getElementById("usedstorage").value],
-    						backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
-                borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
-                borderWidth: 1
-    					}]
-    				},
-    				options: {
-    					animation: {
-    						animateScale: true
-    					}
-    				}
-    			});
-      	</script> -->
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Dashboard</a></li>
+  <li><a data-toggle="tab" href="#menu1">System Set A</a></li>
+  <li><a data-toggle="tab" href="#menu2">System Set B</a></li>
+  <li><a data-toggle="tab" href="#menu3">System Set C</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1><strong>Dashboard</strong></h1>
+        </div>
       </div>
-    </div>
-    </a>
-    <div class="col-sm-4">
-      <div class="tile blue">
-        <h3 class="title"><center>CPU Usage</center></h3>
-        <canvas id="CPUChart" class="block"></canvas>
-        <script>
-          var ctx = document.getElementById("CPUChart").getContext("2d");
-          ctx.canvas.width = 40;
-          ctx.canvas.height = 26;
-          var CPUChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-              labels: ["System Average", "User Average"],
-              datasets: [{
-                label: 'CPU',
-                data: [60, 40],
-                backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
-                borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              animation: {
-                animateScale: true
-              }
-            }
-          });
-        </script>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tile blue">
-        <h3 class="title"><center>Node Info</center></h3>
-        <canvas id="nodeChart" class="block"></canvas>
-        <script>
-          var ctx = document.getElementById("nodeChart").getContext("2d");
-          ctx.canvas.width = 40;
-          ctx.canvas.height = 26;
-          var nodeChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-              labels: ["Online", "Offline", "Missing"],
-              datasets: [{
-                label: "Node Count",
-                data: [100, 1, 1],
-                backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
-                borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
-                borderWidth: 1
-              }]
-            },
-          //   options: {
-          //     scales: {
-          //         yAxes: [{
-          //             ticks: {
-          //                 beginAtZero:true
-          //             }
-          //         }]
-          //     }
-          // }
-          });
-        </script>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="tile blue">
-        <h3 class="title"><center>Predictive Analytics</center></h3>
-        <p></p>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="tile blue">
-        <h3 class="title"><center>File I/O</center0</h3>
-        <canvas id="fileChart" class="block"></canvas>
-        <script>
-          var ctx = document.getElementById("fileChart").getContext("2d");
-          ctx.canvas.width = 40;
-          ctx.canvas.height = 26;
-          var fileChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-              labels: ["Vlun", "Port Targets", "Port Read", "Port Write"],
-              datasets: [{
-                label: "Average Size (KiB)",
-                data: [4, 6, 13, 9],
-                backgroundColor: ['rgba(0, 0, 255, 0.2)', 'rgba(255, 0, 0, 0.2)', 'rgba(255, 0, 255, 0.2)', 'rgba(0, 255, 0, 0.2)'],
-                borderColor: ['rgba(0, 0, 255, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 255, 1)', 'rgba(0, 255, 0, 1)'],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero:true
-                      }
+      <a href="storagedata.html">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="tile blue">
+            <h3 class="title"><center>Storage Use</center></h3>
+            <!-- <script src="functions.js">
+              drawStorageChart();
+            </script> -->
+            <input type="hidden" id="freestorage" value="1">
+            <input type="hidden" id="usedstorage" value="1">
+            <script>
+              var freestorage = 1;
+              var usedstorage = 1;
+              $.get("/data/{system}/storage", function(data, status) {
+                freestorage = data.freeStorage / data.totalStorage;
+                usedstorage = (data.totalStorage - data.freeStorage) / data.totalStorage;
+              });
+            </script>
+            <canvas id="storageChart" class="block"></canvas>
+            <script>
+              var ctx = document.getElementById("storageChart").getContext("2d");
+              ctx.canvas.width = 40;
+              ctx.canvas.height = 26;
+              var storageChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                  labels: ["Free Storage", "Used Storage"],
+                  datasets: [{
+                    label: 'Storage',
+                    data: [document.getElementById("freestorage").value, document.getElementById("usedstorage").value],
+                    backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
+                    borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
+                    borderWidth: 1
                   }]
+                },
+                options: {
+                  animation: {
+                    animateScale: true
+                  }
+                }
+              });
+            </script>
+          </div>
+        </div>
+        </a>
+        <div class="col-sm-4">
+          <div class="tile blue">
+            <h3 class="title"><center>CPU Usage</center></h3>
+            <canvas id="CPUChart" class="block"></canvas>
+            <script>
+              var ctx = document.getElementById("CPUChart").getContext("2d");
+              ctx.canvas.width = 40;
+              ctx.canvas.height = 26;
+              var CPUChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                  labels: ["System Average", "User Average"],
+                  datasets: [{
+                    label: 'CPU',
+                    data: [60, 40],
+                    backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
+                    borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  animation: {
+                    animateScale: true
+                  }
+                }
+              });
+            </script>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tile blue">
+            <h3 class="title"><center>Node Info</center></h3>
+            <canvas id="nodeChart" class="block"></canvas>
+            <script>
+              var ctx = document.getElementById("nodeChart").getContext("2d");
+              ctx.canvas.width = 40;
+              ctx.canvas.height = 26;
+              var nodeChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                  labels: ["Online", "Offline", "Missing"],
+                  datasets: [{
+                    label: "Node Count",
+                    data: [100, 1, 1],
+                    backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
+                    borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
+                    borderWidth: 1
+                  }]
+                },
+              //   options: {
+              //     scales: {
+              //         yAxes: [{
+              //             ticks: {
+              //                 beginAtZero:true
+              //             }
+              //         }]
+              //     }
+              // }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="tile blue">
+            <h3 class="title"><center>Predictive Analytics</center></h3>
+            <p></p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tile blue">
+            <h3 class="title"><center>File I/O</center0</h3>
+            <canvas id="fileChart" class="block"></canvas>
+            <script>
+              var ctx = document.getElementById("fileChart").getContext("2d");
+              ctx.canvas.width = 40;
+              ctx.canvas.height = 26;
+              var fileChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: ["Vlun", "Port Targets", "Port Read", "Port Write"],
+                  datasets: [{
+                    label: "Average Size (KiB)",
+                    data: [4, 6, 13, 9],
+                    backgroundColor: ['rgba(0, 0, 255, 0.2)', 'rgba(255, 0, 0, 0.2)', 'rgba(255, 0, 255, 0.2)', 'rgba(0, 255, 0, 0.2)'],
+                    borderColor: ['rgba(0, 0, 255, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 255, 1)', 'rgba(0, 255, 0, 1)'],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
               }
-          }
-          });
-        </script>
+              });
+            </script>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="tile blue">
+            <h3 class="title"><center>Bandwidth</center></h3>
+            <canvas id="bandwidthChart" class="block"></canvas>
+            <script>
+              var ctx = document.getElementById("bandwidthChart").getContext("2d");
+              ctx.canvas.width = 40;
+              ctx.canvas.height = 26;
+              var bandwidthChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                  labels: ["Read", "Write"],
+                  datasets: [{
+                    label: 'CPU',
+                    data: [30, 70],
+                    backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
+                    borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  animation: {
+                    animateScale: true
+                  }
+                }
+              });
+            </script>
+          </div>
+        </div>    
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="tile blue">
-        <h3 class="title"><center>Bandwidth</center></h3>
-        <canvas id="bandwidthChart" class="block"></canvas>
-        <script>
-          var ctx = document.getElementById("bandwidthChart").getContext("2d");
-          ctx.canvas.width = 40;
-          ctx.canvas.height = 26;
-          var bandwidthChart = new Chart(ctx, {
-            type: 'pie',
-            data: {
-              labels: ["Read", "Write"],
-              datasets: [{
-                label: 'CPU',
-                data: [30, 70],
-                backgroundColor: ['rgba(255, 128, 0, 0.2)', 'rgba(0, 255, 255, 0.2)'],
-                borderColor: ['rgba(255, 128, 0, 1)', 'rgba(0, 255, 255, 1)'],
-                borderWidth: 1
-              }]
-            },
-            options: {
-              animation: {
-                animateScale: true
-              }
-            }
-          });
-        </script>
-      </div>
-    </div>    
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    <h3>System Set A</h3>
+    <p>All hail the almighty varan</p>
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    <h3>System Set B</h3>
+    <p>hello world</p>
+  </div>
+  <div id="menu3" class="tab-pane fade">
+    <h3>System Set C</h3>
+    <p>yo</p>
   </div>
 </div>
 
