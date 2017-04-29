@@ -1,6 +1,7 @@
 package com.quantumimplosion.parser;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -88,6 +89,8 @@ public class DataInserter {
 							break;
 						case CSVParserConstants.INTTYPE:
 							insert.setInt(i+1, (Integer)values.get(i));
+						case CSVParserConstants.DATETYPE:
+							insert.setDate(i+1, (Date) values.get(i));
 						default:
 							insert.setDouble(i+1, (Double) values.get(i));
 							break;

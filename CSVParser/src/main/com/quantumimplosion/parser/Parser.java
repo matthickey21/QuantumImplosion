@@ -3,8 +3,12 @@ package com.quantumimplosion.parser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -67,6 +71,7 @@ public class Parser {
 		}
 	}
 
+	@SuppressWarnings("deprecation")
 	private void parseData(CSVRecord record, String tableName, Set<Integer> invalidColumns, Map<String, Integer>headerMap)
 	{
 		System.out.println("Parsing data for table: " + tableName);
@@ -89,6 +94,34 @@ public class Parser {
 				if (argTypes.get(i) == CSVParserConstants.STRINGTYPE)
 				{
 					values.add(record.get(header));
+				}
+				else if (argTypes.get(i) == CSVParserConstants.DATETYPE)
+				{
+					int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
+					String dateString = record.get(header);
+					String[] tokens = dateString.split("/");
+					day = Integer.parseInt(tokens[0]);
+					month = Integer.parseInt(tokens[1]);
+					tokens = tokens[2].split(" ");
+					year = Integer.parseInt(tokens[0]);
+					tokens = tokens[1].split(":");
+					hour = Integer.parseInt(tokens[0]);
+					minute = Integer.parseInt(tokens[1]);
+					tokens = tokens[2].split(" ");
+					second = Integer.parseInt(tokens[0]);
+					if (tokens[1].equalsIgnoreCase("PM"))
+					{
+						hour += 12;
+					}
+						Date timestamp = new Date();
+						timestamp.setYear(year);
+						timestamp.setMonth(month);
+						timestamp.setDate(day);
+						timestamp.setHours(hour);
+						timestamp.setMinutes(minute);
+						timestamp.setSeconds(second);
+						java.sql.Date date = new java.sql.Date(timestamp.getTime());
+						values.add(date);
 				}
 				else
 				{
