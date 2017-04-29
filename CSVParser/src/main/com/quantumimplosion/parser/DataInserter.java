@@ -139,10 +139,9 @@ public class DataInserter {
 			}
 			insert.executeUpdate();
 		} catch (SQLException e) {
-//			e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
-		System.out.println("Insert success");
 		return true;
 	}
 }

@@ -74,7 +74,6 @@ public class Parser {
 	@SuppressWarnings("deprecation")
 	private void parseData(CSVRecord record, String tableName, Set<Integer> invalidColumns, Map<String, Integer>headerMap)
 	{
-		System.out.println("Parsing data for table: " + tableName);
 		List<String> headers = CSVParserConstants.tableToHeadersMap.get(tableName);
 		List<Object> values = new ArrayList<Object>();
 		List<Integer> argTypes = CSVParserConstants.tableToArgTypeMap.get(tableName);
@@ -97,7 +96,6 @@ public class Parser {
 				}
 				else if (argTypes.get(i) == CSVParserConstants.DATETYPE)
 				{
-					System.out.println(header);
 					try
 					{
 						Date timestamp = new Date();
@@ -126,13 +124,11 @@ public class Parser {
 
 						java.sql.Date date = new java.sql.Date(timestamp.getTime());
 						values.add(date);
-						System.out.println("SUCESS");
 					}
 
 					catch (NumberFormatException e)
 					{
 						values.add(null);
-						System.out.println("NFE, skipping");
 					}
 				}
 				else if (argTypes.get(i) == CSVParserConstants.INTTYPE)
