@@ -97,7 +97,6 @@ public class Parser {
 				}
 				else if (argTypes.get(i) == CSVParserConstants.DATETYPE)
 				{
-					System.out.println(record.get("systemId"));
 					try
 					{
 						int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
@@ -133,6 +132,10 @@ public class Parser {
 						values.add(null);
 						System.out.println("NFE, skipping");
 					}
+				}
+				else if (argTypes.get(i) == CSVParserConstants.INTTYPE)
+				{
+					values.add(Integer.parseInt(record.get(header)));
 				}
 				else
 				{
