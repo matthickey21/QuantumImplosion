@@ -102,15 +102,16 @@ public class Parser {
 					{
 						int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
 						String dateString = record.get(header);
-						String[] tokens = dateString.split("-");
-						year = Integer.parseInt(tokens[0]);
-						month = Integer.parseInt(tokens[1]);
-						tokens = tokens[2].split(" ");
-						day = Integer.parseInt(tokens[0]);
-						tokens = tokens[1].split(":");
-						hour = Integer.parseInt(tokens[0]);
-						minute = Integer.parseInt(tokens[1]);
-						second = Integer.parseInt(tokens[2]);
+						String[] splitted = dateString.split(" ");
+						String[] dateTokens = splitted[0].split("-");
+						String[] timeTokens = splitted[1].split(":");
+						year = Integer.parseInt(dateTokens[0]);
+						month = Integer.parseInt(dateTokens[1]);
+						day = Integer.parseInt(dateTokens[2]);
+						
+						hour = Integer.parseInt(timeTokens[0]);
+						minute = Integer.parseInt(timeTokens[1]);
+						second = Integer.parseInt(timeTokens[3]);
 
 						Date timestamp = new Date();
 						timestamp.setYear(year);
