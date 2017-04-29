@@ -43,7 +43,7 @@ public class Parser {
 		for (CSVRecord record : parser)
 		{
 			Set<Integer> invalidColumns = Validator.validateSummaryRecord(record);
-			parseData(record, "system", invalidColumns, headerMap);
+			parseData(record, "System", invalidColumns, headerMap);
 			parsePerformance(record.get(0));
 		}
 	}
