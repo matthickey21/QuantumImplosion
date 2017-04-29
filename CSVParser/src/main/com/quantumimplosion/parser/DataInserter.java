@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class DataInserter {
-	
+
 
 	private static final String dbHost = "67.205.170.157";
 	private static final int dbPort = 5432;
@@ -19,9 +19,9 @@ public class DataInserter {
 
 	public DataInserter()
 	{
-		
+
 	}
-	
+
 	private boolean connect()
 	{
 		if (connection == null)
@@ -29,7 +29,7 @@ public class DataInserter {
 			try
 			{
 				connection = DriverManager.getConnection(
-						   String.format("jdbc:postgresql://%s:%d/%s", dbHost, dbPort, dbName),dbUsername, dbPassword);
+						String.format("jdbc:postgresql://%s:%d/%s", dbHost, dbPort, dbName),dbUsername, dbPassword);
 				//				connection = new PgConnection(dbHost);
 			}
 			catch (Exception e)
@@ -88,7 +88,7 @@ public class DataInserter {
 							insert.setString(i+1, (String) values.get(i));
 							break;
 						case CSVParserConstants.INTTYPE:
-							insert.setInt(i+1, (Integer)values.get(i));
+							insert.setInt(i+1, (Integer) values.get(i));
 							break;
 						case CSVParserConstants.DATETYPE:
 							insert.setDate(i+1, (Date) values.get(i));
@@ -101,12 +101,40 @@ public class DataInserter {
 					catch(Exception e)
 					{
 						System.out.println("Error inserting value: " + values.get(i).toString() + ". Inserting null.");
-						insert.setNull(i+1, argTypes.get(i) == CSVParserConstants.STRINGTYPE ? java.sql.Types.VARCHAR : java.sql.Types.DOUBLE);
+						switch (argTypes.get(i)) 
+						{
+						case CSVParserConstants.STRINGTYPE:
+							insert.setNull(i+1, java.sql.Types.VARCHAR);
+							break;
+						case CSVParserConstants.INTTYPE:
+							insert.setNull(i+1, java.sql.Types.INTEGER);
+							break;
+						case CSVParserConstants.DATETYPE:
+							insert.setNull(i+1, java.sql.Types.DATE);
+							break;
+						default:
+							insert.setNull(i+1, java.sql.Types.DOUBLE);
+							break;
+						} 
 					}
 				}
 				else
 				{
-					insert.setNull(i+1, argTypes.get(i) == CSVParserConstants.STRINGTYPE ? java.sql.Types.VARCHAR : java.sql.Types.DOUBLE);
+					switch (argTypes.get(i)) 
+					{
+					case CSVParserConstants.STRINGTYPE:
+						insert.setNull(i+1, java.sql.Types.VARCHAR);
+						break;
+					case CSVParserConstants.INTTYPE:
+						insert.setNull(i+1, java.sql.Types.INTEGER);
+						break;
+					case CSVParserConstants.DATETYPE:
+						insert.setNull(i+1, java.sql.Types.DATE);
+						break;
+					default:
+						insert.setNull(i+1, java.sql.Types.DOUBLE);
+						break;
+					} 				
 				}
 			}
 			insert.executeUpdate();
