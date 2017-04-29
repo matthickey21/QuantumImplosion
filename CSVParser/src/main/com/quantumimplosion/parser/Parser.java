@@ -100,27 +100,30 @@ public class Parser {
 					System.out.println(header);
 					try
 					{
+						Date timestamp = new Date();
 						int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
 						String dateString = record.get(header);
 						String[] splitted = dateString.split(" ");
-						System.out.println(splitted[0]);
 						String[] dateTokens = splitted[0].split("-");
-						String[] timeTokens = splitted[1].split(":");
 						year = Integer.parseInt(dateTokens[0]);
 						month = Integer.parseInt(dateTokens[1]);
 						day = Integer.parseInt(dateTokens[2]);
-						
-						hour = Integer.parseInt(timeTokens[0]);
-						minute = Integer.parseInt(timeTokens[1]);
-						second = Integer.parseInt(timeTokens[2]);
-
-						Date timestamp = new Date();
 						timestamp.setYear(year);
 						timestamp.setMonth(month);
 						timestamp.setDate(day);
-						timestamp.setHours(hour);
-						timestamp.setMinutes(minute);
-						timestamp.setSeconds(second);
+						
+						if (splitted.length > 1)
+						{
+							String[] timeTokens = splitted[1].split(":");
+							hour = Integer.parseInt(timeTokens[0]);
+							minute = Integer.parseInt(timeTokens[1]);
+							second = Integer.parseInt(timeTokens[2]);
+							timestamp.setHours(hour);
+							timestamp.setMinutes(minute);
+							timestamp.setSeconds(second);
+						}
+
+
 						java.sql.Date date = new java.sql.Date(timestamp.getTime());
 						values.add(date);
 						System.out.println("SUCESS");
