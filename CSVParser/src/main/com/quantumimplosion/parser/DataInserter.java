@@ -139,7 +139,8 @@ public class DataInserter {
 			}
 			insert.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			if (tableName.equalsIgnoreCase("system"))
+				e.printStackTrace();
 			return false;
 		}
 		return true;
