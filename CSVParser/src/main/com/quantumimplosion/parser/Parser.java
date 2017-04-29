@@ -111,7 +111,7 @@ public class Parser {
 						
 						hour = Integer.parseInt(timeTokens[0]);
 						minute = Integer.parseInt(timeTokens[1]);
-						second = Integer.parseInt(timeTokens[3]);
+						second = Integer.parseInt(timeTokens[2]);
 
 						Date timestamp = new Date();
 						timestamp.setYear(year);
