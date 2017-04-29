@@ -142,6 +142,7 @@ public class DataInserter {
 			e.printStackTrace();
 			return false;
 		}
+		System.out.println("Insert success");
 		return true;
 	}
 }
