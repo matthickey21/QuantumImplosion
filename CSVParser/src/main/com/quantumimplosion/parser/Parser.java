@@ -125,10 +125,12 @@ public class Parser {
 						timestamp.setSeconds(second);
 						java.sql.Date date = new java.sql.Date(timestamp.getTime());
 						values.add(date);
+						System.out.println("SUCESS");
 					}
 
 					catch (NumberFormatException e)
 					{
+						values.add(null);
 						System.out.println("NFE, skipping");
 					}
 				}
