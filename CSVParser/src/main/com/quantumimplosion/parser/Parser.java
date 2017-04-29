@@ -110,7 +110,7 @@ public class Parser {
 						timestamp.setMonth(month);
 						timestamp.setDate(day);
 						
-						if (splitted.length > 1)
+						if (splitted.length > 1 && !splitted[1].equals("+00"))
 						{
 							String[] timeTokens = splitted[1].split(":");
 							hour = Integer.parseInt(timeTokens[0]);
