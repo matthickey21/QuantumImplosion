@@ -137,12 +137,9 @@ public class DataInserter {
 					} 				
 				}
 			}
-			if (tableName.equalsIgnoreCase("system"))
-				System.out.println(insert.toString());
 			insert.executeUpdate();
 		} catch (SQLException e) {
-			if (tableName.equalsIgnoreCase("system"))
-				e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 		return true;
