@@ -97,6 +97,7 @@ public class Parser {
 				}
 				else if (argTypes.get(i) == CSVParserConstants.DATETYPE)
 				{
+					System.out.println(header);
 					try
 					{
 						int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
