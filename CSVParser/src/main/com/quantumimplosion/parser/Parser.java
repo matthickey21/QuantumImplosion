@@ -44,7 +44,7 @@ public class Parser {
 		{
 			Set<Integer> invalidColumns = Validator.validateSummaryRecord(record);
 			parsePerformance(record.get(0));
-//			parseData(record, "system", invalidColumns, headerMap);
+			//			parseData(record, "system", invalidColumns, headerMap);
 		}
 	}
 
@@ -98,22 +98,24 @@ public class Parser {
 				else if (argTypes.get(i) == CSVParserConstants.DATETYPE)
 				{
 					System.out.println(record.get("systemId"));
-					int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
-					String dateString = record.get(header);
-					String[] tokens = dateString.split("/");
-					day = Integer.parseInt(tokens[0]);
-					month = Integer.parseInt(tokens[1]);
-					tokens = tokens[2].split(" ");
-					year = Integer.parseInt(tokens[0]);
-					tokens = tokens[1].split(":");
-					hour = Integer.parseInt(tokens[0]);
-					minute = Integer.parseInt(tokens[1]);
-					tokens = tokens[2].split(" ");
-					second = Integer.parseInt(tokens[0]);
-					if (tokens[1].equalsIgnoreCase("PM"))
+					try
 					{
-						hour += 12;
-					}
+						int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
+						String dateString = record.get(header);
+						String[] tokens = dateString.split("/");
+						day = Integer.parseInt(tokens[0]);
+						month = Integer.parseInt(tokens[1]);
+						tokens = tokens[2].split(" ");
+						year = Integer.parseInt(tokens[0]);
+						tokens = tokens[1].split(":");
+						hour = Integer.parseInt(tokens[0]);
+						minute = Integer.parseInt(tokens[1]);
+						tokens = tokens[2].split(" ");
+						second = Integer.parseInt(tokens[0]);
+						if (tokens[1].equalsIgnoreCase("PM"))
+						{
+							hour += 12;
+						}
 						Date timestamp = new Date();
 						timestamp.setYear(year);
 						timestamp.setMonth(month);
@@ -123,6 +125,12 @@ public class Parser {
 						timestamp.setSeconds(second);
 						java.sql.Date date = new java.sql.Date(timestamp.getTime());
 						values.add(date);
+					}
+
+					catch (NumberFormatException e)
+					{
+						System.out.println("NFE, skipping");
+					}
 				}
 				else
 				{
