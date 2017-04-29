@@ -103,6 +103,7 @@ public class Parser {
 						int year = 0, month = 0, day = 0, hour = 0, minute = 0, second = 0;
 						String dateString = record.get(header);
 						String[] splitted = dateString.split(" ");
+						System.out.println(splitted[0]);
 						String[] dateTokens = splitted[0].split("-");
 						String[] timeTokens = splitted[1].split(":");
 						year = Integer.parseInt(dateTokens[0]);
