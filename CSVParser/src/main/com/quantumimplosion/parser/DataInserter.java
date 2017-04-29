@@ -82,15 +82,17 @@ public class DataInserter {
 				{
 					try
 					{
-						switch (argTypes.get(i)) //Type can only be string or double, used a switch statement to more easily accomodate more types
+						switch (argTypes.get(i)) 
 						{
 						case CSVParserConstants.STRINGTYPE:
 							insert.setString(i+1, (String) values.get(i));
 							break;
 						case CSVParserConstants.INTTYPE:
 							insert.setInt(i+1, (Integer)values.get(i));
+							break;
 						case CSVParserConstants.DATETYPE:
 							insert.setDate(i+1, (Date) values.get(i));
+							break;
 						default:
 							insert.setDouble(i+1, (Double) values.get(i));
 							break;
