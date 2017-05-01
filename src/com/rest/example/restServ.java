@@ -23,15 +23,151 @@ public class restServ {
   private static final String dbPassword = "notpassword";
   private static Connection connection;
 
- @GET
+  @GET
  @Produces(MediaType.WILDCARD)
  
  public ResultSet getTest() throws SQLException{
-	 connect();
-	PreparedStatement select = connection.prepareCall("SELECT * FROM test_table");
+	 	connect();
+		PreparedStatement select = connection.prepareCall("SELECT * FROM test_table");
         ResultSet selectResults = select.executeQuery();
         close();
-	return selectResults;
+		return selectResults;
+ }
+ 
+ 
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/{user}/sets")
+ public ResultSet retrieveSystemSets(@PathParam("user") String user){
+	return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/{user}/systems")
+ public ResultSet retrieveSystem(@PathParam("user") String user) {
+	 return null;
+	 
+ }
+ @POST
+ @Path("/{user}/sets/create")
+ public void createSystemSet(@PathParam("user") String user, String setName, List<String> systemList){
+	 
+ }
+ 
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}")
+ public ResultSet systemOverview(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set}")
+ public ResultSet systemSetOverview(@PathParam("system_set") String system_set) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/storage")
+ public ResultSet systemStorageData(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set}/storage")
+ public ResultSet systemSetStorageData(@PathParam("system_set") String system_set) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/cpu")
+ public ResultSet systemCPUdata(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set}/cpu")
+ public ResultSet systemSetCPUdata(@PathParam("system_set") String system_set) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/io")
+ public ResultSet systemFileIOdata(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set}/io")
+ public ResultSet systemSetFileIOdata(@PathParam("system_set") String system_set) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/bandwidth")
+ public ResultSet systemBandwidthData(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/node")
+ public ResultSet systemNodeInfo(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set}/node")
+ public ResultSet systemSetNodeInfo(@PathParam("system_set") String system_set) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/dedupe")
+ public ResultSet systemDeduplicationData(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set}/dedupe")
+ public ResultSet systemSetDeduplicationData(@PathParam("system_set") String system_set) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system}/compare")
+ public ResultSet likeSystemComparison(@PathParam("system") String system) {
+	 return null;
+	 
+ }
+ 
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/{system_1}/compare/{system_2}")
+ public ResultSet specificSystemComparison(@PathParam("system_1") String system_1, @PathParam("system_2") String system_2) {
+	 return null;
+	 
+ }
+ @GET
+ @Produces(MediaType.WILDCARD)
+ @Path("/data/sets/{system_set_2}/compare/{system_set_2}")
+ public ResultSet specificSystemSetComparison(@PathParam("system_1") String system_1, @PathParam("system_2") String system_2) {
+	 return null;
+	 
  }
 
  private static boolean connect()
