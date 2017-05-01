@@ -24,11 +24,14 @@ public class restServ {
   private static Connection connection;
 
  @GET
- //-------this might be the issue -------------
- @Produces(MediaType.TEXT_PLAIN)
- public void getTest() throws SQLException{
-		PreparedStatement select = connection.prepareCall("SELECT * FROM test_table");
+ @Produces(MediaType.WILDCARD)
+ 
+ public ResultSet getTest() throws SQLException{
+	 connect();
+	PreparedStatement select = connection.prepareCall("SELECT * FROM test_table");
         ResultSet selectResults = select.executeQuery();
+        close();
+	return selectResults;
  }
 
  private static boolean connect()
