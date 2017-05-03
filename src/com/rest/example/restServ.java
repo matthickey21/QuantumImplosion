@@ -14,6 +14,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 
+import java.net.ConnectionException;
+
 @Path("/rest")
 public class restServ {
   private static final String dbHost = "67.205.170.157";
@@ -37,8 +39,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/{user}/sets")
- public ResultSet retrieveSystemSets(@PathParam("user") String user){
-	 connect();
+ public ResultSet retrieveSystemSets(@PathParam("user") String user) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: retrieveSystemSets");
 	 close();
 	return null;
 	 
@@ -46,16 +49,18 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/{user}/systems")
- public ResultSet retrieveSystem(@PathParam("user") String user) {
-	 connect();
+ public ResultSet retrieveSystem(@PathParam("user") String user) throws ConnectionException {
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: retrieveSystem");
 	 close();
 	 return null;
 	 
  }
  @POST
  @Path("/{user}/sets/create")
- public void createSystemSet(@PathParam("user") String user, String setName, List<String> systemList){
-	 connect();
+ public void createSystemSet(@PathParam("user") String user, String setName, List<String> systemList) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: createSystemSet");
 	 close();
 	 
  }
@@ -63,8 +68,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}")
- public ResultSet systemOverview(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemOverview(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemOverview");
 	 close();
 	 return null;
 	 
@@ -72,8 +78,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set}")
- public ResultSet systemSetOverview(@PathParam("system_set") List<String> system_set) {
-	 connect();
+ public ResultSet systemSetOverview(@PathParam("system_set") List<String> system_set) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemSetOverview");
 	 close();
 	 return null;
 	 
@@ -81,8 +88,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/storage")
- public ResultSet systemStorageData(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemStorageData(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemStorageData");
 	 close();
 	 return null;
 	 
@@ -90,8 +98,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set}/storage")
- public ResultSet systemSetStorageData(@PathParam("system_set") List<String> system_set) {
-	 connect();
+ public ResultSet systemSetStorageData(@PathParam("system_set") List<String> system_set) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemSetStorageData");
 	 close();
 	 return null;
 	 
@@ -99,8 +108,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/cpu")
- public ResultSet systemCPUdata(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemCPUdata(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemCPUdata");
 	 close();
 	 return null;
 	 
@@ -108,8 +118,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set}/cpu")
- public ResultSet systemSetCPUdata(@PathParam("system_set") List<String> system_set) {
-	 connect();
+ public ResultSet systemSetCPUdata(@PathParam("system_set") List<String> system_set) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemSetCPUdata");
 	 close();
 	 return null;
 	 
@@ -117,8 +128,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/io")
- public ResultSet systemFileIOdata(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemFileIOdata(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemFileIOdata");
 	 close();
 	 return null;
 	 
@@ -126,8 +138,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set}/io")
- public ResultSet systemSetFileIOdata(@PathParam("system_set") List<String> system_set) {
-	 connect();
+ public ResultSet systemSetFileIOdata(@PathParam("system_set") List<String> system_set) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemSetFileIOdata");
 	 close();
 	 return null;
 	 
@@ -135,8 +148,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/bandwidth")
- public ResultSet systemBandwidthData(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemBandwidthData(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemBandwidthData");
 	 close();
 	 return null;
 	 
@@ -144,8 +158,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/node")
- public ResultSet systemNodeInfo(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemNodeInfo(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemNodeInfo");
 	 close();
 	 return null;
 	 
@@ -154,8 +169,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set}/node")
- public ResultSet systemSetNodeInfo(@PathParam("system_set") List<String> system_set) {
-	 connect();
+ public ResultSet systemSetNodeInfo(@PathParam("system_set") List<String> system_set) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemSetNodeInfo");
 	 close();
 	 return null;
 	 
@@ -163,8 +179,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/dedupe")
- public ResultSet systemDeduplicationData(@PathParam("system") String system) {
-	 connect();
+ public ResultSet systemDeduplicationData(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemDeduplicationData");
 	 close();
 	 return null;
 	 
@@ -172,8 +189,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set}/dedupe")
- public ResultSet systemSetDeduplicationData(@PathParam("system_set") List<String> system_set) {
-	 connect();
+ public ResultSet systemSetDeduplicationData(@PathParam("system_set") List<String> system_set) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: systemSetDeduplicationData");
 	 close();
 	 return null;
 	 
@@ -181,8 +199,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system}/compare")
- public ResultSet likeSystemComparison(@PathParam("system") String system) {
-	 connect();
+ public ResultSet likeSystemComparison(@PathParam("system") String system) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: likeSystemComparison");
 	 close();
 	 return null;
 	 
@@ -191,8 +210,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/{system_1}/compare/{system_2}")
- public ResultSet specificSystemComparison(@PathParam("system_1") String system_1, @PathParam("system_2") String system_2) {
-	 connect();
+ public ResultSet specificSystemComparison(@PathParam("system_1") String system_1, @PathParam("system_2") String system_2) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: specificSystemComparison");
 	 close();
 	 return null;
 	 
@@ -200,8 +220,9 @@ public class restServ {
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/data/sets/{system_set_2}/compare/{system_set_2}")
- public ResultSet specificSystemSetComparison(@PathParam("system_set_1") List<String> system_set_1, @PathParam("system_set_2") List<String> system_set_2) {
-	 connect();
+ public ResultSet specificSystemSetComparison(@PathParam("system_set_1") List<String> system_set_1, @PathParam("system_set_2") List<String> system_set_2) throws ConnectionException{
+	 if(connect() == false)
+	 	throw new ConnectionException("Cannot connect to database: specificSystemSetComparison");
 	 close();
 	 return null;
 	 
@@ -236,7 +257,9 @@ public class restServ {
          }
      }
      return true;
- }    private static void close()
+ }   
+
+ private static void close()
  {
      if (connection != null)
      {
