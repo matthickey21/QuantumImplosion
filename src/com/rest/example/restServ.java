@@ -31,6 +31,9 @@ public class restServ {
 	 	connect();
 		PreparedStatement select = connection.prepareCall("SELECT * FROM test_table");
         ResultSet selectResults = select.executeQuery();
+        while(selectResults.next()){
+        	System.out.println(selectResults.getString(1));
+        }
         close();
 		return selectResults;
  }
@@ -44,8 +47,8 @@ public class restServ {
 	 	throw new ConnectionException("Cannot connect to database: retrieveSystemSets");
 	 close();
 	return null;
-	 
  }
+
  @GET
  @Produces(MediaType.WILDCARD)
  @Path("/{user}/systems")
@@ -61,6 +64,7 @@ public class restServ {
  public void createSystemSet(@PathParam("user") String user, String setName, List<String> systemList) throws ConnectionException{
 	 if(connect() == false)
 	 	throw new ConnectionException("Cannot connect to database: createSystemSet");
+	 Statement statement = connection.createStatement();
 	 close();
 	 
  }
