@@ -20,7 +20,7 @@
 </div>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Dashboard</a></li>
+  <li class="active"><a data-toggle="tab" href="#home">Default System Set</a></li>
   <li><a data-toggle="tab" href="#menu1">System Set A</a></li>
   <li><a data-toggle="tab" href="#menu2">System Set B</a></li>
   <li><a data-toggle="tab" href="#menu3">System Set C</a></li>
@@ -145,10 +145,38 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="tile blue">
-            <h3 class="title"><center>Predictive Analytics</center></h3>
-            <p></p>
+            <h3 class="title"><center>Deduplication Info</center></h3>
+            <canvas id="dedupeChart" class="block"></canvas>
+            <script>
+              var ctx = document.getElementById("dedupeChart").getContext("2d");
+              ctx.canvas.width = 40;
+              ctx.canvas.height = 26;
+              var fileChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                  labels: ["Current", "Previous", "Average"],
+                  datasets: [{
+                    label: "Size Used (Tebibytes)",
+                    data: [0.431640625, 0.428466797, 0.430795333],
+                    backgroundColor: ['rgba(0, 0, 255, 0.2)', 'rgba(255, 0, 0, 0.2)', 'rgba(255, 0, 255, 0.2)', 'rgba(0, 255, 0, 0.2)'],
+                    borderColor: ['rgba(0, 0, 255, 1)', 'rgba(255, 0, 0, 1)', 'rgba(255, 0, 255, 1)', 'rgba(0, 255, 0, 1)'],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  scales: {
+                      yAxes: [{
+                          ticks: {
+                              beginAtZero:true
+                          }
+                      }]
+                  }
+              }
+              });
+            </script>
           </div>
         </div>
+      <a href="fileIOdata.html">
         <div class="col-sm-4">
           <div class="tile blue">
 		  <h3 class="title"><center>File I/O</center></h3>
@@ -182,6 +210,7 @@
             </script>
           </div>
         </div>
+        </a>
         <div class="col-sm-4">
           <div class="tile blue">
             <h3 class="title"><center>Bandwidth</center></h3>
