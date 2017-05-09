@@ -3,6 +3,7 @@ package com.quantumimplosion.parser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -120,10 +121,10 @@ public class Parser {
 							timestamp.setMinutes(minute);
 							timestamp.setSeconds(second);
 						}
-
-
-						java.sql.Date date = new java.sql.Date(timestamp.getTime());
-						values.add(date);
+						System.out.println(timestamp);
+						Timestamp t = new Timestamp(timestamp.getTime());
+						System.out.println(t);
+						values.add(t);
 					}
 
 					catch (NumberFormatException e)
