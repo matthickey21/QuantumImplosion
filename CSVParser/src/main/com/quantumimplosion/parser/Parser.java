@@ -105,10 +105,7 @@ public class Parser {
 						String dateString = record.get(header);
 						String[] splitted = dateString.split(" ");
 						String[] dateTokens = splitted[0].split("-");
-						System.out.println(Arrays.asList(splitted));
-						System.out.println(Arrays.asList(dateTokens));
 						year = Integer.parseInt(dateTokens[0]);
-						System.out.println("Year: " + year);
 						month = Integer.parseInt(dateTokens[1]);
 						day = Integer.parseInt(dateTokens[2]);
 						timestamp.setYear(year - 1900);
@@ -125,7 +122,6 @@ public class Parser {
 							timestamp.setMinutes(minute);
 							timestamp.setSeconds(second);
 						}
-						System.out.println(timestamp);
 						Timestamp t = new Timestamp(timestamp.getTime());
 						System.out.println(t);
 						values.add(t);
