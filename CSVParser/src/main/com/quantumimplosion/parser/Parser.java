@@ -107,11 +107,11 @@ public class Parser {
 						String[] dateTokens = splitted[0].split("-");
 						System.out.println(Arrays.asList(splitted));
 						System.out.println(Arrays.asList(dateTokens));
-						System.out.println("Year: " + year);
 						year = Integer.parseInt(dateTokens[0]);
+						System.out.println("Year: " + year);
 						month = Integer.parseInt(dateTokens[1]);
 						day = Integer.parseInt(dateTokens[2]);
-						timestamp.setYear(year);
+						timestamp.setYear(year - 1900);
 						timestamp.setMonth(month);
 						timestamp.setDate(day);
 						
