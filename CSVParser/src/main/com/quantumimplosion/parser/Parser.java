@@ -8,6 +8,7 @@ import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -104,6 +105,8 @@ public class Parser {
 						String dateString = record.get(header);
 						String[] splitted = dateString.split(" ");
 						String[] dateTokens = splitted[0].split("-");
+						System.out.println(Arrays.asList(splitted));
+						System.out.println(Arrays.asList(dateTokens));
 						System.out.println("Year: " + year);
 						year = Integer.parseInt(dateTokens[0]);
 						month = Integer.parseInt(dateTokens[1]);
