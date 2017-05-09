@@ -122,7 +122,7 @@ public class Parser {
 							timestamp.setMinutes(minute);
 							timestamp.setSeconds(second);
 						}
-						Timestamp t = new Timestamp(timestamp.getTime());
+						Date t = new Date(timestamp.getTime());
 						System.out.println(t);
 						values.add(t);
 					}
