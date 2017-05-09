@@ -3,10 +3,12 @@ package com.quantumimplosion.parser;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -106,7 +108,7 @@ public class Parser {
 						year = Integer.parseInt(dateTokens[0]);
 						month = Integer.parseInt(dateTokens[1]);
 						day = Integer.parseInt(dateTokens[2]);
-						timestamp.setYear(year);
+						timestamp.setYear(year - 1900);
 						timestamp.setMonth(month);
 						timestamp.setDate(day);
 						
@@ -120,10 +122,9 @@ public class Parser {
 							timestamp.setMinutes(minute);
 							timestamp.setSeconds(second);
 						}
-
-
-						java.sql.Date date = new java.sql.Date(timestamp.getTime());
-						values.add(date);
+						java.sql.Date t = new java.sql.Date(timestamp.getTime());
+						System.out.println(t);
+						values.add(t);
 					}
 
 					catch (NumberFormatException e)

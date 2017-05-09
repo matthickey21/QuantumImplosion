@@ -73,8 +73,9 @@ public class DataInserter {
 		}
 
 		//Can definitely clean up the logic here.
+		PreparedStatement insert = null;
 		try {
-			PreparedStatement insert = connection.prepareStatement(CSVParserConstants.tableToStatementMap.get(tableName));
+			 insert = connection.prepareStatement(CSVParserConstants.tableToStatementMap.get(tableName));
 			for (int i = 0; i < values.size(); i++)
 			{
 				Object val = values.get(i);
@@ -139,7 +140,9 @@ public class DataInserter {
 			}
 			insert.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
+			if (insert !=  null)
+			System.out.println("Failure: " + insert.toString());
 			return false;
 		}
 		System.out.println("Insert success: " + tableName);
