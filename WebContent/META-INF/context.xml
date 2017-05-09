@@ -1,0 +1,11 @@
+<Context>
+<Resource name="jdbc/overload"
+auth="Container"
+type="javax.sql.DataSource"
+username="quantumimplosion"
+password="notpassword"
+driverClassName="org.postgresql.Driver"
+url="jdbc:postgresql://67.205.170.157:5432/overload"
+maxActive="15"
+maxIdle="3"/>
+</Context>

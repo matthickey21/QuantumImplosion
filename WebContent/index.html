@@ -42,14 +42,13 @@
             <!-- <script src="functions.js">
               drawStorageChart();
             </script> -->
-            <input type="hidden" id="freestorage" value="1">
-            <input type="hidden" id="usedstorage" value="1">
             <script>
               var freestorage = 1;
               var usedstorage = 1;
-              $.get("/data/{system}/storage", function(data, status) {
-                freestorage = data.freeStorage / data.totalStorage;
-                usedstorage = (data.totalStorage - data.freeStorage) / data.totalStorage;
+              $.get("rest/data/9/", function(data, status) {
+                freestorage = data.capacity_total_freePct;
+                console.log(freestorage);
+                usedstorage = 100 - freestorage;
               });
             </script>
             <canvas id="storageChart" class="block"></canvas>
