@@ -104,6 +104,7 @@ public class Parser {
 						String dateString = record.get(header);
 						String[] splitted = dateString.split(" ");
 						String[] dateTokens = splitted[0].split("-");
+						System.out.println("Year: " + year);
 						year = Integer.parseInt(dateTokens[0]);
 						month = Integer.parseInt(dateTokens[1]);
 						day = Integer.parseInt(dateTokens[2]);
