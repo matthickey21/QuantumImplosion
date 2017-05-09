@@ -1,0 +1,2 @@
+vvCountHistVlun,vvCountHistVlunPrevious,totalWriteIOsHistVlun,totalWriteIOsHistPortTargets,cpuLatestTotalMaxPct,cpuLatestTotalAvgPct,portTotalAvgIOSizeKB,ddsSizeUsedTiB,nodeCountOffline,nodeCountMissing,ddsSizeUsedTiBPrevious,portTotalBandwidthMBPS,totalsGt32msPct
+21,24,1.17733878E9,1.204821332E9,17,9,50.15096546360498,0,0,0,0,11.165872708905619,2.0
